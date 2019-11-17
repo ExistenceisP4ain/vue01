@@ -17,3 +17,6 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+# Donate via bitcoin
+### bc1qsp7dhw0daf6av4z20scymw83gytcdfgasszqtr
