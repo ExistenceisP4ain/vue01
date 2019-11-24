@@ -1,11 +1,59 @@
 <template>
-<div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa id neque aliquam vestibulum morbi.</p>
-  <hr class="my-4">
-  <p>Congue mauris rhoncus aenean vel elit. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero. Aliquam eleifend mi in nulla. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ipsum suspendisse ultrices gravida dictum. Magna ac placerat vestibulum lectus mauris.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="login" role="button">Login</a>
-  </p>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-7">
+
+      <InstagramCard />
+      <InstagramCard />
+      <InstagramCard />
+
+    </div>
+    <div class="col-3">
+<div class="card">
+  <div class="card-header">
+    Stories
+  </div>
+      <stories />
+ <stories />
+ <!-- stories -->
 </div>
+<div class="card">
+  <h6>Suggestions</h6>
+  <div class="card-body">
+    <suggestions />
+    <!-- suggs -->
+  </div>
+</div>
+
+      
+    </div>
+  </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import InstagramCard from '@/components/InstagramCard.vue'
+import stories from '@/components/stories.vue'
+import suggestions from '@/components/suggestions.vue'
+
+export default {
+  name: 'home',
+  components: {
+    InstagramCard,
+    stories,
+    suggestions
+  }
+}
+
+</script>
+
+<style lang="scss">
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .card-body{
+    padding: 7px;
+  }
+</style>
