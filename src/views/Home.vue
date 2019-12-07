@@ -1,11 +1,51 @@
 <template>
-<div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa id neque aliquam vestibulum morbi.</p>
-  <hr class="my-4">
-  <p>Congue mauris rhoncus aenean vel elit. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero. Aliquam eleifend mi in nulla. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ipsum suspendisse ultrices gravida dictum. Magna ac placerat vestibulum lectus mauris.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="login" role="button">Login</a>
-  </p>
-</div>
+  <div class="row">
+    <div class="col-8">
+
+      <InstagramCard v-for="card in filteredCards" :info="card" />
+      
+
+    </div>
+    <div class="col-4">
+      Mi smo sidebar
+    </div>
+  </div>
 </template>
+
+<script>
+import InstagramCard from '@/components/InstagramCard.vue'
+import store from '@/store.js'
+export default {
+ name: 'home',
+ data() {
+ return {
+ cards: [
+ { title: 'jedan', time: 'an hour ago', url:
+'https://picsum.photos/id/1/400/400', user: 'Elon Musk' },
+ { title: 'dva', time: '2 days ago', url:
+'https://picsum.photos/id/2/400/400', user: 'Admin' },
+ ]
+ }
+ },
+ computed: {
+ filteredCards() {
+ return this.cards.filter(card => card.title.includes(store.searchTerm) || card.user.includes(store.searchTerm))
+ }
+ },
+ components: {
+ InstagramCard
+ }
+}
+
+
+
+
+</script>
+
+<style lang="scss">
+
+.card-body {
+  padding: 0px;
+}
+
+</style>
