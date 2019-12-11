@@ -1,11 +1,43 @@
 <template>
-<div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa id neque aliquam vestibulum morbi.</p>
-  <hr class="my-4">
-  <p>Congue mauris rhoncus aenean vel elit. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero. Aliquam eleifend mi in nulla. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Pellentesque habitant morbi tristique senectus et netus et malesuada. Ipsum suspendisse ultrices gravida dictum. Magna ac placerat vestibulum lectus mauris.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="login" role="button">Login</a>
-  </p>
-</div>
+  <div class="row">
+    <div class="col-8">
+      <div v-if="searchTerm !== ''">
+        Searching for {{ searchTerm }}. {{ filteredCards.length }} of {{ cards.length }}
+      </div>
+      <div v-if="authenticated">
+      <InstagramCard v-bind:key="card.title" v-bind:info="card" v-for="card in filteredCards" />
+      </div>
+    </div>
+    <div class="col-4">
+      Ovo je sidebar
+    </div>
+  </div>
 </template>
+<script>
+import InstagramCard from '@/components/InstagramCard.vue'
+import store from "@/store.js"
+export default {
+  data () {
+    return store;
+  },
+  computed: {
+    filteredCards () {
+      return this.cards.filter(card => card.title.includes(this.searchTerm))
+    }
+  },
+  name: 'home',
+  components: {
+    InstagramCard
+  }
+}
+</script>
+<style lang="scss">
+
+.card {
+  margin-bottom: 20px;
+
+  .card-body {
+    padding: 0px;
+  }
+}
+</style>
