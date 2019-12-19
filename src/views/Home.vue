@@ -3,6 +3,10 @@
     <div class="col-8">
 
       <div v-if="authenticated">
+
+
+<div class="row">
+  <div class="col-sm"> 
         <!-- oof -->
       <p>Upload an image to Firebase:</p>
       <input type="file" @change="previewImage" accept="image/*" >
@@ -10,19 +14,22 @@
       
         <img class="preview" :src="picture">
         <br>
-      <button @click="onUpload">Upload</button>
-
+      <button @click="onUpload" class="btn btn-primary ml-2">Upload</button>
+<br><br></div>
+<div class="col-sm">
         <!-- nova forma za post -->
  <form @submit.prevent="postNewImage" class="form-inline mb-5">
  <div class="form-group">
  <label for="imageUrl">Image URL</label>
  <input v-model="newImageUrl" type="text" class="form-control ml-2"
 id="imageUrl" placeholder="Enter the image URL">
- </div>
+ </div><br><br><br>
  <button type="submit" class="btn btn-primary ml-2">Post image</button>
  </form>
+</div>
+</div>
 
-<!-- drag n drop -->
+<!-- vue uploader 
 <uploader :options="options" class="uploader-example">
     <uploader-unsupport></uploader-unsupport>
     <uploader-drop>
@@ -33,7 +40,7 @@ id="imageUrl" placeholder="Enter the image URL">
     </uploader-drop>
     <uploader-list></uploader-list>
   </uploader>
-
+-->
 
   
 
